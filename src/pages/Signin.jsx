@@ -58,7 +58,7 @@ export const Signin = () => {
           <div className=" border-green-800 max-w-[500px] w-[100%] flex justify-center items-center">
             <form
               onSubmit={handleSubmit}
-              className="bg-[#e8d5f8] shadow-md  max-w-[500px] w-full flex flex-col gap-10 items-center  p-6 rounded-3xl h-[100%] text-2xl"
+              className="bg-[white] shadow-xl  max-w-[500px] w-full flex flex-col gap-10 items-center  p-6 rounded-3xl h-[100%] text-2xl"
             >
               <h2 className="text-4xl  text-gray-800 mt-[100px]  text-center font-bold">
                 Welcome Back
@@ -96,12 +96,12 @@ export const Signin = () => {
             </form>
           </div>
 
-          <div className="hidden md:flex ml-4   max-w-[500px] w-[100%] relative">
-            <div className="h-[100%] w-[100%] absolute">
+          <div className="hidden md:flex ml-4   max-w-[500px] w-[100%] relative rounded-lg ">
+            <div className=" w-[100%] absolute left-0 right-0 bottom-0 top-0">
               <img
                 src={link}
                 alt="logo"
-                className="h-[100%] w-[100%] cursor-pointer"
+                className="h-[100%] w-[100%] cursor-pointer rounded-2xl"
               />
             </div>
           </div>

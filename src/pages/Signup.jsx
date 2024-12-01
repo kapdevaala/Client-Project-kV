@@ -58,7 +58,7 @@ export const Signup = () => {
           <div className=" border-green-800 max-w-[500px] w-[100%] flex justify-center items-center">
             <form
               onSubmit={handleSubmit}
-              className="bg-[#e3dce9] shadow-md  max-w-[500px] w-full flex flex-col gap-10 items-center  p-6 rounded-3xl h-[100%] text-2xl"
+              className="bg-[white] shadow-xl  max-w-[500px] w-full flex flex-col gap-10 items-center  p-6 rounded-3xl h-[100%] text-2xl"
             >
               <h2 className="text-4xl  text-gray-800 mt-[100px]  text-center font-bold">
                 Please Register

@@ -35,7 +35,7 @@ export const Featured = () => {
       image: link,
       title: "T-shirt With Tape Details",
       description: "",
-      price: 200,
+      price: 100,
       category: "men",
       discount: 50,
     },
@@ -48,7 +48,7 @@ export const Featured = () => {
       </p>
       <div className="max-w-[100%] w-[100%] flex flex-wrap justify-center items-center gap-3 min-h-[200px] h-[100%]">
         {value.map((product) => (
-          <div className="shadow shadow-[black] bg-[#e8d5f8] h-[450px] w-[300px] flex flex-col gap-2 justify-evenly p-4 rounded-lg">
+          <div className="shadow shadow-[black] bg-[] h-[450px] w-[300px] flex flex-col gap-2 justify-evenly p-4 rounded-lg">
             <div className=" h-[100%] w-[100%] rounded-lg">
               <img
                 src={product.image}
@@ -73,7 +73,7 @@ export const Featured = () => {
                 </div>
               )}
             </div>
-            <button className=" p-2 rounded-2xl text-white bg-[#3C3C3C]">
+            <button className="p-2 rounded-2xl text-white bg-[#3C3C3C]">
               Buy
             </button>
           </div>

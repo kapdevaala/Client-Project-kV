@@ -48,7 +48,7 @@ export const TopSelling = () => {
       </p>
       <div className="max-w-[100%] w-[100%] flex flex-wrap justify-center items-center gap-3 min-h-[200px] h-[100%]">
         {value.map((product) => (
-          <div className="shadow shadow-[black] bg-[#e8d5f8] h-[450px] w-[300px] flex flex-col gap-2 justify-evenly p-4  rounded-lg">
+          <div className="shadow shadow-[black] bg-[white] h-[450px] w-[300px] flex flex-col gap-2 justify-evenly p-4  rounded-lg">
             <div className=" h-[100%] w-[100%] rounded-lg">
               <img
                 src={product.image}
