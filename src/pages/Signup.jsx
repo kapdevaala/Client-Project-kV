@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import link from "../assets/login-page.png";
 import { useState } from "react";
-// import { setToken, setUser } from "../store/slices/authSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 export const Signup = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,8 @@ export const Signup = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    username: "",
+    accountType: "Customer",
   });
 
   const handleChange = (e) => {
@@ -20,12 +22,14 @@ export const Signup = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
+
     e.preventDefault();
     setLoading(true);
 
     try {
       const resp = await fetch(
-        "https://backend-project-kv.onrender.com/api/v1/auth/signin",
+        "https://backend-project-kv.onrender.com/v1/auth/signup",
         {
           method: "POST",
           headers: {
@@ -35,16 +39,19 @@ export const Signup = () => {
         }
       );
       const response = await resp.json();
+      console.log("Response", response);
       if (resp.ok) {
-        dispatch(setToken(response.token));
-        localStorage.setItem("token", JSON.stringify(response.token));
-        dispatch(setUser(response.user));
-        navigate(-1);
+        console.log("Navigating");
+        toast.success("User Registered Successfully");
+        navigate("/signin");
       } else {
-        // console.log("Error in connecting ");
+        console.log("Error in connecting ");
+        toast.error(response.message);
       }
     } catch (error) {
-      // console.error("Error:", error);
+      console.error("Error:", error);
+      setLoading(false);
+      toast.error(response.message);
     } finally {
       setLoading(false);
     }
@@ -60,9 +67,21 @@ export const Signup = () => {
               onSubmit={handleSubmit}
               className="bg-[white] shadow-xl  max-w-[500px] w-full flex flex-col gap-10 items-center  p-6 rounded-3xl h-[100%] text-2xl"
             >
-              <h2 className="text-4xl  text-gray-800 mt-[100px]  text-center font-bold">
+              <h2 className="text-4xl  text-gray-800 mt-[60px]  text-center font-bold">
                 Please Register
               </h2>
+              <div className="w-full">
+                <label className="block  font-medium text-gray-700 mb-2">
+                  UserName
+                </label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Enter UserName"
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                />
+              </div>
               <div className="w-full">
                 <label className="block  font-medium text-gray-700 mb-2">
                   Email Address

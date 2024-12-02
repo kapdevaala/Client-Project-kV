@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import link from "../assets/login-page.png";
 import { useState } from "react";
-// import { setToken, setUser } from "../store/slices/authSlice";
+import { setToken, setUser } from "../store/slices/authSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 export const Signin = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const Signin = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     setLoading(true);
 
@@ -36,15 +38,23 @@ export const Signin = () => {
       );
       const response = await resp.json();
       if (resp.ok) {
-        dispatch(setToken(response.token));
+        console.log("response", response);
+        console.log("User response,", response.user);
+        console.log("User token,", response.token);
         localStorage.setItem("token", JSON.stringify(response.token));
+        dispatch(setToken(response.token));
         dispatch(setUser(response.user));
-        navigate(-1);
+        toast.success("User Logged In");
+        navigate("/");
       } else {
-        // console.log("Error in connecting ");
+        console.log("Error in connecting ");
+        toast.error(response.message);
+        setLoading(false);
       }
     } catch (error) {
-      // console.error("Error:", error);
+      console.error("Error:", error);
+      setLoading(false);
+      toast.error("Error while Connecting ");
     } finally {
       setLoading(false);
     }
